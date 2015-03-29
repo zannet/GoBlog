@@ -1,0 +1,15 @@
+{{define "home"}}
+{{template "base_header" .}}
+<h1>{{ .title }}</h1>
+<hr>
+
+{{range .posts}}
+	<h2>{{ .Title }}</h2>
+	<p>{{escape .Body }}</p>
+	<hr>
+{{else}}
+	No hay posts
+{{end}}
+
+{{template "base_footer" .}}
+{{end}}

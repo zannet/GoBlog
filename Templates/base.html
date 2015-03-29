@@ -1,0 +1,19 @@
+{{define "base_header"}}
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>{{ .title }}</title>
+		<!-- Style -->
+		<link rel="stylesheet" type="text/css" href="{{ ._static_root }}/bootstrap/css/bootstrap.min.css">
+		<link rel="stylesheet" type="text/css" href="{{ ._static_root }}/bootstrap/css/bootstrap-theme.min.css">
+		<!-- Scripts -->
+		<script type="text/javascript" src="{{ ._static_root }}/bootstrap/js/bootstrap.min.js"></script>
+		<script type="text/javascript" src="{{ ._static_root }}/main.js"></script>
+	</head>
+	<body>
+		<div class="container">
+			{{end}}{{define "base_footer"}}
+		</div>
+	</body>
+</html>
+{{end}}
