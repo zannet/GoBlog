@@ -13,7 +13,7 @@ import (
 func Init() {
 	// Init a new Router
 	router := gin.Default()
-
+	// Set the static route to access
 	router.Static("/static", "./Static")
 
 	// Create the functions map for template rendering
@@ -25,8 +25,9 @@ func Init() {
 	html := template.Must(template.New("").Funcs(funcMap).ParseGlob("Templates/*"))
     router.SetHTMLTemplate(html)
 
+    // Home path
 	router.GET( "/", Controllers.HomeController, Utils.AddTemplatingInfo, Views.HomeView)
 
-	// Run in the port 8080
+	// Run the web server
     router.Run(":" + Config.Global.Service.Port)
 }

@@ -4,7 +4,6 @@ import (
 	"code.google.com/p/gcfg"
 	"fmt"
 	"os"
-	"path/filepath"
 )
 
 var Global Config
@@ -25,26 +24,30 @@ type Config struct {
 }
 
 func Load() {
-	// Get the actual path
-	dir, err := filepath.Abs(filepath.Dir(os.Args[0]))
+	// Get the working directory
+	dir, err := os.Getwd()
 	// If there was an error...
 	if err != nil {
-		fmt.Println("ERROR: Couldn't get the actual path")
+		fmt.Println("ERROR: Couldn't get the working directory")
 		os.Exit(1)
 		return
 	}
 
-	// Set the current working directory
+	// Set the working directory globally
 	CWD = dir
 
+	// Get the OS separator
 	sep := string(os.PathSeparator)
 
-	if _, err := os.Stat(CWD + sep + "config.cfg"); os.IsNotExist(err) {
-		fmt.Println("ERROR: Couldn't find the configuration file (config.cfg) in the current working directory ("+ (CWD + sep + "config.cfg") +")")
+	// Config path
+	configPath = CWD + sep + "config.cfg"
+	if _, err := os.Stat(configPath); os.IsNotExist(err) {
+		fmt.Println("ERROR: Couldn't find the configuration file (config.cfg) in the current working directory ("+ configPath +")")
 		os.Exit(1)
 		return
 	}
 
+	// Create the Config element to be filled with config file data
 	var cfg Config
 	err = gcfg.ReadFileInto(&cfg, CWD + sep + "config.cfg")
 	if err != nil {
@@ -53,5 +56,6 @@ func Load() {
 		return
 	}
 
+	// Set the global configuration
 	Global = cfg
 }
