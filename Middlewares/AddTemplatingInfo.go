@@ -1,4 +1,4 @@
-package Utils
+package Middlewares
 
 import (
 	"github.com/gin-gonic/gin"
@@ -10,6 +10,8 @@ func AddTemplatingInfo(c *gin.Context) {
 	obj := c.MustGet("data").(gin.H)
 	// Add the required data
 	obj["_static_root"] = Config.Global.Service.Address + "/static"
+	// Set the web's title
+	obj["_site_title"] = "Sirikon's Lab"
 	// And save it again
 	c.Set("data", obj)
 }

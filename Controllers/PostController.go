@@ -9,8 +9,6 @@ import (
 func PostController(c *gin.Context) {
 	// Create a new gin.H
 	obj := gin.H{}
-	// Set the web's title
-	obj["title"] = "Sirikon's Lab"
 
 	// Post element
 	var post Models.Post
