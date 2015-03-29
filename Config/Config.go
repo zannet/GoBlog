@@ -40,7 +40,7 @@ func Load() {
 	sep := string(os.PathSeparator)
 
 	// Config path
-	configPath = CWD + sep + "config.cfg"
+	configPath := CWD + sep + "config.cfg"
 	if _, err := os.Stat(configPath); os.IsNotExist(err) {
 		fmt.Println("ERROR: Couldn't find the configuration file (config.cfg) in the current working directory ("+ configPath +")")
 		os.Exit(1)

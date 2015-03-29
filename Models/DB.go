@@ -1,7 +1,6 @@
 package Models
 
 import (
-	"fmt"
     "github.com/jinzhu/gorm"
     _ "github.com/go-sql-driver/mysql"
     "../Config"

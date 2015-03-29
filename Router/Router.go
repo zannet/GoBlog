@@ -26,7 +26,8 @@ func Init() {
     router.SetHTMLTemplate(html)
 
     // Home path
-	router.GET( "/", Controllers.HomeController, Utils.AddTemplatingInfo, Views.HomeView)
+	router.GET( "/",           Controllers.HomeController, Utils.AddTemplatingInfo, Views.HomeView)
+	router.GET( "/post/:slug", Controllers.PostController, Utils.AddTemplatingInfo, Views.PostView)
 
 	// Run the web server
     router.Run(":" + Config.Global.Service.Port)
