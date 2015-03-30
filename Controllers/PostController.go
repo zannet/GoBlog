@@ -12,7 +12,7 @@ func PostController(c *gin.Context) {
 
 	// Post element
 	var post Models.Post
-	Models.Connection.Where(&Models.Post{Slug: "prueba"}).First(&post)
+	Models.Connection.Where(&Models.Post{Slug: c.Params.ByName("slug")}).First(&post)
 
 	// Set the 'post' in the data object
 	obj["post"] = post
