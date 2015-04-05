@@ -30,6 +30,11 @@ func Init() {
 	router.GET( "/",           Controllers.HomeController,  Middlewares.AddTemplatingInfo, Views.HomeView)
 	router.GET( "/post/:slug", Controllers.PostController,  Middlewares.AddTemplatingInfo, Views.PostView)
 
+	// API Paths
+	router.GET ("/api/posts",       Controllers.PostListController,   Views.PostListAPIView)
+	router.GET ("/api/post/:slug",  Controllers.PostController,       Views.PostAPIView)
+	router.PUT ("/api/post/:slug",  Controllers.PostUpdateController, Views.PostAPIView)
+
 	// Run the web server
     router.Run(":" + Config.Global.Service.Port)
 }

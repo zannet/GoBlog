@@ -2,13 +2,27 @@
 <html ng-app="admin">
 <head>
 	<title>Admin Site</title>
+
+	<!-- Style -->
+	<link rel="stylesheet" type="text/css" href="lib/bootstrap/dist/css/bootstrap.min.css">
+	<link rel="stylesheet" type="text/css" href="lib/bootstrap/dist/css/bootstrap-theme.min.css">
+
+	<!-- Scripts -->
+	<script type="text/javascript" src="lib/jquery/dist/jquery.min.js"></script>
+	<script type="text/javascript" src="lib/bootstrap/dist/js/bootstrap.min.js"></script>
 	<script src="lib/angular/angular.js"></script>
+	<script src="lib/angular-ui-router/release/angular-ui-router.js"></script>
 	<script src="src/app.js"></script>
 	<script src="src/controllers.js"></script>
 	<script src="src/directives.js"></script>
 	<script src="src/services.js"></script>
 </head>
 <body>
-	<h1>Admin Site</h1>
+	<div class="container">
+		<h1>Admin Site</h1>
+		<hr>
+		<div ui-view></div>
+	</div>
+	
 </body>
 </html>
